@@ -15,8 +15,14 @@ patch=no
 series=focal
 checkbugs=yes
 buildmeta=no
-maintainer="Zaphod Beeblebrox <zaphod@betelgeuse-seven.western-spiral-arm.change.me.to.match.signing.key>"
+maintainer="Eriks Remess <eriks@remess.lv>"
 buildargs="-aamd64 -d"
+#a aamd64 set the host Debian architecture amd64
+#d = do not check build dependencies and conflicts
+#uc = unsigned .buildinfo and .changes file.
+#ui unsigned .buildinfo file.
+#us unsigned source package.
+
 
 do_metapackage() {
   KVER=$1
@@ -110,7 +116,7 @@ git reset --hard HEAD
 if [ "$update" == "yes" ]
 then
   echo -e "********\n\nUpdating git source tree\n\n********"
-  git fetch --tags origin 
+  git fetch --tags origin
 fi
 
 # checkout the kver
